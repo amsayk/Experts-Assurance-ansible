@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  roles:
+    - { role: n,        tags: ['n', 'node'] }
+  vars:
+    terminfo_path: ~/share/terminfo
+
