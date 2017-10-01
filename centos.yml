@@ -1,7 +1,12 @@
 ---
 - hosts: localhost
   roles:
-    - { role: n,        tags: ['n', 'node'] }
+    - { role: n,             tags: ['n', 'node'] }
+    - { role: elasticsearch, tags: ['elasticsearch'] }
+    - { role: mongodb,       tags: ['mongodb'] }
+    - { role: redis,         tags: ['redis'] }
+    - { role: mqtt,          tags: ['mqtt'] }
+    - { role: app,           tags: ['app'] }
   vars:
     terminfo_path: ~/share/terminfo
 

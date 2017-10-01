@@ -1,2 +1,2 @@
-Ansible installation script for Experts-assurances.
+Ansible installation script for Experts Assurance.
 
