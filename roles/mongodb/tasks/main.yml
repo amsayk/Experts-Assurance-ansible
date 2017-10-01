@@ -1,2 +1,19 @@
 ---
-# file: tasks/main.yml
+
+- name: MongoDB | Configure MongoDB repo
+  template: src=mongodb-org.repo.j2 dest=/etc/yum.repos.d/mongodb-org-{{ mongodb_version }}.repo
+
+- name: MongoDB | Install MongoDB
+  yum: >
+    name={{ item }}
+    state=present
+    enablerepo=mongodb-org-{{ mongodb_version }},epel
+  with_items:
+    - mongodb-org
+
+- name: MongoDB | Starting MongoDB
+  systemd:
+    name: mongod
+    daemon_reload: yes
+    state: started
+    enabled: yes

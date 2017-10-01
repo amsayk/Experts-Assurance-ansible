@@ -1,12 +1,12 @@
 ---
 - hosts: localhost
   roles:
+    - { role: selinux,       tags: ['selinux'] }
     - { role: n,             tags: ['n', 'node'] }
-    - { role: elasticsearch, tags: ['elasticsearch'] }
+    - { role: nginx,         tags: ['nginx'] }
+    - { role: elasticsearch, tags: ['elasticsearch'], es_instance_name: "node1" }
     - { role: mongodb,       tags: ['mongodb'] }
-    - { role: redis,         tags: ['redis'] }
+    - { role: redis,         tags: ['redis'], redis_version: 3.2.3, ansible_processor_cores: 4 }
     - { role: mqtt,          tags: ['mqtt'] }
     - { role: app,           tags: ['app'] }
-  vars:
-    terminfo_path: ~/share/terminfo
 

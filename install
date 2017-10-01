@@ -92,7 +92,7 @@ fi
 
 source vendor/ansible/hacking/env-setup &> $DEV_NULL
 
-ansible-playbook --ask-become-pass -i inventory ${VERBOSE+-v} ${ROLES} centos.yml
+ansible-playbook -i inventory ${VERBOSE+-v} ${ROLES} centos.yml
 
 trap - EXIT
 

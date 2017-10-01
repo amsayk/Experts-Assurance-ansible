@@ -4,3 +4,5 @@
 # variables needed to be defined in user's playbook
 #
 
+mongodb_version: 3.4
+

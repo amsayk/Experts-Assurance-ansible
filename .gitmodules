@@ -4,3 +4,9 @@
 [submodule "vendor/virtualenv"]
 	path = vendor/virtualenv
 	url = https://github.com/pypa/virtualenv
+[submodule "roles/elasticsearch"]
+	path = roles/elasticsearch
+	url = https://github.com/elastic/ansible-elasticsearch
+[submodule "roles/redis"]
+	path = roles/redis
+	url = https://github.com/DavidWittman/ansible-redis

@@ -1,5 +1,4 @@
 ---
-# file: tasks/main.yml
 
 - name: NGINX | Installing NGINX repo rpm
   yum:

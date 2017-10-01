@@ -1,2 +1,37 @@
 ---
-# file: tasks/main.yml
+
+- name: MQTT | Configure MQTT repo
+  template: src=mqtt.repo.j2 dest=/etc/yum.repos.d/mqtt.repo
+
+- name: MQTT | Remove MQTT
+  yum: >
+    name={{ item }}
+    state=removed
+    enablerepo=mqtt,epel
+  with_items:
+    - mosquitto
+    - mosquitto-clients
+    - libmosquitto1
+    - libmosquitto-devel
+    - libmosquittopp1
+    - libmosquittopp-devel
+
+- name: MQTT | Install MQTT
+  yum: >
+    name={{ item }}
+    state=present
+    enablerepo=mqtt,epel
+  with_items:
+    - mosquitto
+    - mosquitto-clients
+    - libmosquitto1
+    - libmosquitto-devel
+    - libmosquittopp1
+    - libmosquittopp-devel
+
+- name: MQTT | Starting MQTT
+  systemd:
+    name: mosquitto
+    daemon_reload: yes
+    state: started
+    enabled: yes
