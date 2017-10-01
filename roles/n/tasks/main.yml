@@ -5,12 +5,32 @@
 # @see https://github.com/tj/n
 #
 
-- name: download N
+- name: N | download N
   git: repo={{n_repo}} dest=/tmp/n
 
-- name: install N
+- name: N | install N
   command: make -C /tmp/n
 
-- name: install Node.js
+- name: N | link n
+  file:
+    src: "/usr/local/bin/n"
+    dest: "/usr/bin/n"
+    state: link
+
+- name: N | install Node.js
   command: n {{node_version}}
+
+- name: N | link node & npm
+  file:
+    src: "/usr/local/bin/node"
+    dest: "/usr/bin/node"
+    state: link
+  file:
+    src: "/usr/local/bin/npm"
+    dest: "/usr/bin/npm"
+    state: link
+
+- name: N | install packages
+  command: npm install -g {{item}}
+  with_items: '{{packages}}'
 

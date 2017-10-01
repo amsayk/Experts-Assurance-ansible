@@ -10,3 +10,7 @@ node_version: latest
 # N github repo
 n_repo: https://github.com/visionmedia/n
 
+# packages to install
+packages:
+  - npm
+  - yarn
